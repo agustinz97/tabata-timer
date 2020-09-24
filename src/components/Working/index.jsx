@@ -22,9 +22,7 @@ export const Working = ({ workout }) => {
     const [timerState, setTimerState] = useState(new Timer())
     const [currentSet, setCurrentSet] = useState(0)
     const [currentCycle, setCurrentCycle] = useState(0)
-    const [timeRemaining, setTimeRemainig] = useState(
-        getTotalTimeFromWorkoutArray(workout || [])
-    )
+    const [timeRemaining, setTimeRemainig] = useState()
 
     const { setRunning, workout: workoutObject } = useContext(AppContext)
 
@@ -88,6 +86,12 @@ export const Working = ({ workout }) => {
 
     /* control de la aecuencia */
     const updateSetsAndCycles = () => {
+        if (currentIndex === 0) {
+            setCurrentSet(0)
+            setCurrentCycle(0)
+            setTimeRemainig(getTotalTimeFromWorkoutArray(workout || []))
+            return
+        }
         const workoutItem = workout[currentIndex]
 
         if (workoutItem?.type === 'work') {

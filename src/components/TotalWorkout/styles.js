@@ -21,13 +21,13 @@ export const TotalWorkoutStyled = styled.div`
         top: 0;
         left: 0;
 
-        /* opacity: ${props => (props.active ? '1' : '0')};
+        opacity: ${props => (props.active ? '1' : '0')};
         pointer-events: ${props => (props.active ? 'all' : 'none')};
-        transition: opacity ease-in-out 0.3s; */
+        transition: opacity ease-in-out 0.3s;
 
-        transform: ${props =>
+        /* transform: ${props =>
             props.active ? 'translateX(0)' : 'translateX(-100%)'};
-        transition: transform ease-in 0.2s;
+        transition: transform ease-in 0.2s; */
     }
 `
 
