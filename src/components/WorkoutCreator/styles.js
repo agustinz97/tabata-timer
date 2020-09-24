@@ -1,11 +1,15 @@
 import styled from 'styled-components'
 
 export const Selectors = styled.div`
-    width: 900px;
-    max-width: 100%;
+    width: 100%;
     margin: 0 auto;
 
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    & > * {
+        margin-bottom: 16px;
+    }
 `

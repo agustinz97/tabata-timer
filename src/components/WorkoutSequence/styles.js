@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const SequenceContainer = styled.div`
     height: 80vh;
     width: 100%;
-    max-width: 550px;
+    max-width: 700px;
     margin: 0 auto;
 
     background-color: rgba(255, 255, 255, 0.2);
@@ -12,14 +12,19 @@ export const SequenceContainer = styled.div`
 
     display: grid;
     grid-template-rows: 15% 1fr;
+
+    @media (max-width: 767px) {
+        display: none;
+    }
 `
 
-export const SequenceHeader = styled.div`
+export const SequenceHeaderStyled = styled.div`
     width: 100%;
     padding: 1rem;
 
-    display: grid;
-    grid-template-columns: 1fr 1fr 2fr;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 
     background-color: rgba(255, 255, 255, 0.9);
 
@@ -31,15 +36,30 @@ export const SequenceHeader = styled.div`
 
         span {
             font-size: 20px;
-            color: /* ${props => props.color} */ #000;
+            color: #000;
             text-transform: uppercase;
+
+            @media (max-width: 768px) {
+                font-size: 18px;
+                font-weight: bold;
+                color: #fff;
+            }
         }
 
         p {
             font-size: 36px;
             font-weight: bold;
-            color:/*  ${props => props.color}; */ #000;
+            color: #000;
+
+            @media (max-width: 768px) {
+                font-size: 30px;
+                color: #fff;
+            }
         }
+    }
+
+    @media (max-width: 768px) {
+        background-color: transparent;
     }
 `
 export const Sequence = styled.ul`

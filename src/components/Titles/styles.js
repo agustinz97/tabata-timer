@@ -13,12 +13,24 @@ export const TitleStyled = styled.h1`
     background: ${props => props.bg};
     border: 10px solid ${props => darken('-0.1', props.border)};
     border-radius: 1em;
+
+    @media (max-width: 767px) {
+        font-size: 2rem;
+        line-height: 2rem;
+        margin-bottom: 0;
+    }
 `
 
 export const SubtitleStyled = styled.h3`
     font-size: 2rem;
     line-height: 2rem;
     color: ${({ color }) => (color ? color : 'black')};
+
+    @media (max-width: 767px) {
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+        margin-bottom: 0;
+    }
 `
 
 export const WorkoutTitleStyled = styled.div`
@@ -43,5 +55,8 @@ export const WorkoutTitleStyled = styled.div`
         color: #fff;
         font-size: 20px;
         margin: 0 8px;
+    }
+
+    @media (max-width: 768px) {
     }
 `

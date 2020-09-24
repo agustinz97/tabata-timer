@@ -5,15 +5,12 @@ import { WorkoutCreator } from './components/WorkoutCreator'
 import { TotalWorkout } from './components/TotalWorkout'
 import { Working } from './components/Working'
 
-import { COLOR_TYPE } from './utils/constants'
-
-import { AppStyled, Division } from './styles'
+import { AppStyled, Division, OpenWorkout } from './styles'
 import { createWorkoutArray } from './utils/utils'
 
 export const AppContext = React.createContext({})
 
 function App() {
-    const [bg, setBg] = useState(COLOR_TYPE['initial'])
     const [running, setRunning] = useState(false)
     const [workout, setWorkout] = useState({
         preparation: 3,
@@ -24,11 +21,9 @@ function App() {
         longRest: 2,
     })
     const [workoutArray, setWorkoutArray] = useState([])
+    const [workoutPreviewActive, setWorkoutPreviewActive] = useState(false)
 
     const startWorkout = () => {
-        /* const array = createWorkoutArray(workout)
-        setWorkoutArray(array) */
-
         setRunning(true)
     }
 
@@ -36,9 +31,13 @@ function App() {
         setWorkoutArray(createWorkoutArray(workout))
     }, [workout])
 
+    useEffect(() => {
+        console.log(workoutPreviewActive)
+    }, [workoutPreviewActive])
+
     return (
-        <AppContext.Provider value={{ setBg, setRunning, workout, setWorkout }}>
-            <AppStyled color={bg}>
+        <AppContext.Provider value={{ setRunning, workout, setWorkout }}>
+            <AppStyled>
                 {running ? (
                     <>
                         <Working workout={workoutArray} />
@@ -51,7 +50,21 @@ function App() {
                             <TotalWorkout
                                 workout={workoutArray}
                                 handleStart={startWorkout}
+                                active={workoutPreviewActive}
                             />
+                            <OpenWorkout
+                                onClick={() =>
+                                    setWorkoutPreviewActive(
+                                        prevState => !prevState
+                                    )
+                                }
+                            >
+                                {workoutPreviewActive === true ? (
+                                    <i className="fas fa-times"></i>
+                                ) : (
+                                    <i className="fas fa-dumbbell"></i>
+                                )}
+                            </OpenWorkout>
                         </Division>
                     </>
                 )}

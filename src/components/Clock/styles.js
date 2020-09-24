@@ -17,4 +17,12 @@ export const ClockStyled = styled.div`
 
     font-size: ${props => (props.minutes ? '120px' : '200px')};
     color: ${props => (props.color ? props.color : '#3268a8')};
+
+    @media (max-width: 767px) {
+        width: 250px;
+        height: 250px;
+        margin: 1rem auto;
+
+        font-size: ${props => (props.minutes ? '60px' : '160px')};
+    }
 `
