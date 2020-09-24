@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import { darken } from 'polished'
 
 export const ClockStyled = styled.div`
-    width: 400px;
-    height: 400px;
+    width: 500px;
+    height: 500px;
     margin: 2rem auto;
 
     border: 10px solid
@@ -15,6 +15,6 @@ export const ClockStyled = styled.div`
     justify-content: center;
     align-items: center;
 
-    font-size: 150px;
+    font-size: ${props => (props.minutes ? '120px' : '200px')};
     color: ${props => (props.color ? props.color : '#3268a8')};
 `

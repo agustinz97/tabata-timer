@@ -20,8 +20,8 @@ export const Working = ({ workout }) => {
     const [type, setType] = useState('preparation')
     const [currentIndex, setCurrentIndex] = useState(0)
     const [timerState, setTimerState] = useState(new Timer())
-    const [currentSet, setCurrentSet] = useState(1)
-    const [currentCycle, setCurrentCycle] = useState(1)
+    const [currentSet, setCurrentSet] = useState(0)
+    const [currentCycle, setCurrentCycle] = useState(0)
     const [timeRemaining, setTimeRemainig] = useState(
         getTotalTimeFromWorkoutArray(workout || [])
     )
@@ -94,14 +94,15 @@ export const Working = ({ workout }) => {
 
     /* control de la aecuencia */
     const updateSetsAndCycles = () => {
-        if (workout[currentIndex - 1]) {
-            const workoutIten = workout[currentIndex - 1]
+        const workoutItem = workout[currentIndex]
 
-            if (workoutIten.type === 'rest') {
+        if (workoutItem?.type === 'work') {
+            if (currentSet < workoutObject.sets) {
                 setCurrentSet(prevSet => prevSet + 1)
-            } else if (workoutIten.type === 'longRest') {
-                setCurrentSet(1)
+                setCurrentCycle(prevCycle => (prevCycle === 0 ? 1 : prevCycle))
+            } else {
                 setCurrentCycle(prevCycle => prevCycle + 1)
+                setCurrentSet(1)
             }
         }
     }
