@@ -87,8 +87,8 @@ export const Working = ({ workout }) => {
     /* control de la aecuencia */
     const updateSetsAndCycles = () => {
         if (currentIndex === 0) {
-            setCurrentSet(0)
-            setCurrentCycle(0)
+            setCurrentSet(1)
+            setCurrentCycle(1)
             setTimeRemainig(getTotalTimeFromWorkoutArray(workout || []))
             return
         }
