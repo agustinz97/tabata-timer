@@ -19,13 +19,13 @@ export const SequenceHeader = ({
     return (
         <SequenceHeaderStyled>
             <div>
-                <span>Series</span>
+                <span>Serie</span>
                 <p>
                     {sets}/{totalSets}
                 </p>
             </div>
             <div>
-                <span>Rondas</span>
+                <span>Ronda</span>
                 <p>
                     {cycles}/{totalCycles}
                 </p>

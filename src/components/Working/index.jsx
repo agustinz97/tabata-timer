@@ -70,6 +70,9 @@ export const Working = ({ workout }) => {
         setTime(workout[0].time)
         setCurrentIndex(0)
         setType('preparation')
+        setCurrentSet(0)
+        setCurrentCycle(0)
+        setTimeRemainig(getTotalTimeFromWorkoutArray(workout || []))
     }
 
     const stopWorkout = () => {
@@ -86,19 +89,13 @@ export const Working = ({ workout }) => {
 
     /* control de la aecuencia */
     const updateSetsAndCycles = () => {
-        if (currentIndex === 0) {
-            setCurrentSet(1)
-            setCurrentCycle(1)
-            setTimeRemainig(getTotalTimeFromWorkoutArray(workout || []))
-            return
-        }
         const workoutItem = workout[currentIndex]
 
         if (workoutItem?.type === 'work') {
             if (currentSet < workoutObject.sets) {
                 setCurrentSet(prevSet => prevSet + 1)
                 setCurrentCycle(prevCycle => (prevCycle === 0 ? 1 : prevCycle))
-            } else {
+            } else if (currentCycle < workoutObject.cycles) {
                 setCurrentCycle(prevCycle => prevCycle + 1)
                 setCurrentSet(1)
             }
