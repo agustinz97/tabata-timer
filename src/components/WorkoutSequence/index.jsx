@@ -4,15 +4,43 @@ import { COLOR_TYPE, TEXTS } from '../../utils/constants'
 import { secondsToMinutes } from '../../utils/utils'
 import {
     SequenceContainer,
-    SequenceHeader,
+    SequenceHeaderStyled,
     Sequence,
     SequenceItem,
 } from './styles'
 
+export const SequenceHeader = ({
+    sets = 0,
+    totalSets = 0,
+    cycles = 0,
+    totalCycles = 0,
+    remaining = 0,
+}) => {
+    return (
+        <SequenceHeaderStyled>
+            <div>
+                <span>Series</span>
+                <p>
+                    {sets}/{totalSets}
+                </p>
+            </div>
+            <div>
+                <span>Rondas</span>
+                <p>
+                    {cycles}/{totalCycles}
+                </p>
+            </div>
+            <div>
+                <span>Tiempo restante</span>
+                <p>{secondsToMinutes(remaining)}</p>
+            </div>
+        </SequenceHeaderStyled>
+    )
+}
+
 export const WorkoutSequence = ({
     workoutArray,
     currentIndex = 0,
-    currentType = null,
     sets = 0,
     totalSets = 0,
     cycles = 0,
@@ -35,24 +63,13 @@ export const WorkoutSequence = ({
 
     return (
         <SequenceContainer>
-            <SequenceHeader color={COLOR_TYPE[currentType]}>
-                <div>
-                    <span>Series</span>
-                    <p>
-                        {sets}/{totalSets}
-                    </p>
-                </div>
-                <div>
-                    <span>Rondas</span>
-                    <p>
-                        {cycles}/{totalCycles}
-                    </p>
-                </div>
-                <div>
-                    <span>Tiempo restante</span>
-                    <p>{secondsToMinutes(remaining)}</p>
-                </div>
-            </SequenceHeader>
+            <SequenceHeader
+                sets={sets}
+                totalSets={totalSets}
+                cycles={cycles}
+                totalCycles={totalCycles}
+                remaining={remaining}
+            />
             <Sequence ref={list}>
                 {workoutArray.map((item, i) => {
                     return (

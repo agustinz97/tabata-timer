@@ -11,7 +11,7 @@ import {
     getTotalTimeFromWorkoutArray,
 } from '../../utils/utils'
 
-export const TotalWorkout = ({ workout = [], handleStart }) => {
+export const TotalWorkout = ({ workout = [], handleStart, active }) => {
     const [totalTime, setTotalTime] = useState(0)
 
     useEffect(() => {
@@ -22,7 +22,7 @@ export const TotalWorkout = ({ workout = [], handleStart }) => {
     }, [workout])
 
     return (
-        <TotalWorkoutStyled>
+        <TotalWorkoutStyled active={active}>
             <TotalTime>
                 <Subtitle text={'Rutina'} />
                 <span> {secondsToMinutes(totalTime)} </span>

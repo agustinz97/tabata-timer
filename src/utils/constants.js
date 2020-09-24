@@ -20,11 +20,10 @@ export const TEXTS = {
 
 export const COLOR_TYPE = {
     rest: '#32a852',
-    longRest: '#69d6a0',
+    longRest: '#32a852',
     work: '#db3421',
-    preparation: '#eb983f',
+    preparation: '#520187',
     finish: '#3268a8',
     sets: '#3268a8',
     cycles: '#3268a8',
-    initial: '#3268a8',
 }

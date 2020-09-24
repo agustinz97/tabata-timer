@@ -3,7 +3,7 @@ import React, { useEffect, useState, useContext } from 'react'
 import { Clock } from '../Clock'
 import { TimeControls } from '../TimeControl'
 import { Title } from '../Titles'
-import { WorkoutSequence } from '../WorkoutSequence'
+import { WorkoutSequence, SequenceHeader } from '../WorkoutSequence'
 import { WorkingContainer } from './styles'
 
 import { AppContext } from '../../App'
@@ -26,7 +26,7 @@ export const Working = ({ workout }) => {
         getTotalTimeFromWorkoutArray(workout || [])
     )
 
-    const { setBg, setRunning, workout: workoutObject } = useContext(AppContext)
+    const { setRunning, workout: workoutObject } = useContext(AppContext)
 
     //timer
     useEffect(() => {
@@ -60,11 +60,6 @@ export const Working = ({ workout }) => {
         }
     }, [time, type])
 
-    //bagkground
-    useEffect(() => {
-        setBg(COLOR_TYPE[type])
-    }, [type, setBg])
-
     //pasar al siguiente elemento del workout
     useEffect(() => {
         setTime(workout[currentIndex]?.time)
@@ -80,7 +75,6 @@ export const Working = ({ workout }) => {
     }
 
     const stopWorkout = () => {
-        setBg(COLOR_TYPE['initial'])
         setRunning(false)
     }
 
@@ -114,8 +108,15 @@ export const Working = ({ workout }) => {
     }, [workout])
 
     return (
-        <WorkingContainer>
+        <WorkingContainer color={COLOR_TYPE[type]}>
             <div>
+                <SequenceHeader
+                    sets={currentSet}
+                    totalSets={workoutObject.sets}
+                    cycles={currentCycle}
+                    totalCycles={workoutObject.cycles}
+                    remaining={timeRemaining}
+                />
                 <Title text={String(TEXTS[type]).toUpperCase()} type={type} />
                 <Clock time={time} type={type} />
                 <TimeControls
@@ -126,16 +127,17 @@ export const Working = ({ workout }) => {
                 />
             </div>
 
-            <WorkoutSequence
-                workoutArray={workout}
-                currentIndex={currentIndex}
-                currentType={workout[currentIndex].type}
-                sets={currentSet}
-                totalSets={workoutObject.sets}
-                cycles={currentCycle}
-                totalCycles={workoutObject.cycles}
-                remaining={timeRemaining}
-            />
+            <div>
+                <WorkoutSequence
+                    workoutArray={workout}
+                    currentIndex={currentIndex}
+                    sets={currentSet}
+                    totalSets={workoutObject.sets}
+                    cycles={currentCycle}
+                    totalCycles={workoutObject.cycles}
+                    remaining={timeRemaining}
+                />
+            </div>
         </WorkingContainer>
     )
 }

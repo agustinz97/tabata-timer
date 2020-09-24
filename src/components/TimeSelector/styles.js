@@ -13,6 +13,10 @@ export const TimeSelectorStyled = styled.div`
 
     color: #fff;
 
+    @media (max-width: 767px) {
+        grid-template-columns: 2fr 1fr;
+    }
+
     .selector-type {
         width: 100%;
         height: 100%;
@@ -24,6 +28,10 @@ export const TimeSelectorStyled = styled.div`
 
         span {
             font-size: 1.5rem;
+
+            @media (max-width: 767px) {
+                font-size: 18px;
+            }
         }
     }
 
@@ -38,4 +46,8 @@ export const TimeSelectorStyled = styled.div`
 export const Icon = styled.i`
     font-size: 50px;
     color: #fff;
+
+    @media (max-width: 767px) {
+        font-size: 30px;
+    }
 `
