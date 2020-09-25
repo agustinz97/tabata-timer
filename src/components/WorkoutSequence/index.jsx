@@ -46,6 +46,7 @@ export const WorkoutSequence = ({
     cycles = 0,
     totalCycles = 0,
     remaining = 0,
+    active,
 }) => {
     const list = useRef(null)
 
@@ -62,14 +63,16 @@ export const WorkoutSequence = ({
     useEffect(nextSequenceItem, [currentIndex])
 
     return (
-        <SequenceContainer>
-            <SequenceHeader
-                sets={sets}
-                totalSets={totalSets}
-                cycles={cycles}
-                totalCycles={totalCycles}
-                remaining={remaining}
-            />
+        <SequenceContainer active={active}>
+            {active === false && (
+                <SequenceHeader
+                    sets={sets}
+                    totalSets={totalSets}
+                    cycles={cycles}
+                    totalCycles={totalCycles}
+                    remaining={remaining}
+                />
+            )}
             <Sequence ref={list}>
                 {workoutArray.map((item, i) => {
                     return (

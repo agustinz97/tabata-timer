@@ -18,6 +18,10 @@ export const TitleStyled = styled.h1`
         font-size: 2rem;
         line-height: 2rem;
         margin-bottom: 0;
+
+        padding: 10px 20px;
+
+        border-width: 5px;
     }
 `
 

@@ -23,6 +23,7 @@ export const Working = ({ workout }) => {
     const [currentSet, setCurrentSet] = useState(0)
     const [currentCycle, setCurrentCycle] = useState(0)
     const [timeRemaining, setTimeRemainig] = useState()
+    const [sequenceActive, setSequenceActive] = useState(false)
 
     const { setRunning, workout: workoutObject } = useContext(AppContext)
 
@@ -130,17 +131,16 @@ export const Working = ({ workout }) => {
                 />
             </div>
 
-            <div>
-                <WorkoutSequence
-                    workoutArray={workout}
-                    currentIndex={currentIndex}
-                    sets={currentSet}
-                    totalSets={workoutObject.sets}
-                    cycles={currentCycle}
-                    totalCycles={workoutObject.cycles}
-                    remaining={timeRemaining}
-                />
-            </div>
+            <WorkoutSequence
+                workoutArray={workout}
+                currentIndex={currentIndex}
+                sets={currentSet}
+                totalSets={workoutObject.sets}
+                cycles={currentCycle}
+                totalCycles={workoutObject.cycles}
+                remaining={timeRemaining}
+                active={sequenceActive}
+            />
         </WorkingContainer>
     )
 }

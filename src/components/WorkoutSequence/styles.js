@@ -13,8 +13,24 @@ export const SequenceContainer = styled.div`
     display: grid;
     grid-template-rows: 15% 1fr;
 
-    @media (max-width: 767px) {
-        display: none;
+    @media (max-width: 768px) {
+        width: 100%;
+        height: 100vh;
+
+        display: flex;
+        flex-direction: column;
+
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 0;
+
+        transition: all ease-in-out 0.3s;
+        opacity: ${props => (props.active ? '1' : '0')};
+        transform: ${props =>
+            props.active ? 'translateX(0%) ' : 'translateX(-200%) '};
     }
 `
 
@@ -29,10 +45,8 @@ export const SequenceHeaderStyled = styled.div`
     background-color: rgba(255, 255, 255, 0.9);
 
     @media (max-width: 768px) {
+        padding: 0;
         background-color: transparent;
-
-        /* display: grid;
-        grid-template-columns: 1fr 1fr 3fr; */
     }
 
     .header-item {
@@ -72,6 +86,7 @@ export const SequenceHeaderStyled = styled.div`
         }
     }
 `
+
 export const Sequence = styled.ul`
     width: 100%;
     height: 100%;
@@ -104,11 +119,14 @@ export const SequenceItem = styled.li`
 
     background-color: rgba(255, 255, 255, 0.05);
 
-    /* border-top: 1px solid #fff; */
     border-bottom: 1px solid #fff;
 
+    @media (max-width: 767px) {
+        color: #1c1c1c;
+        font-size: 24px;
+    }
+
     &.current {
-        background-color: ${props => props.color};
         position: relative;
 
         &::before,
@@ -122,6 +140,10 @@ export const SequenceItem = styled.li`
             top: 50%;
 
             transform: translateY(-50%);
+
+            @media (max-width: 767px) {
+                background-color: #1c1c1c;
+            }
         }
 
         &::before {

@@ -1,5 +1,4 @@
 import styled, { keyframes } from 'styled-components'
-import { darken } from 'polished'
 
 import { SequenceHeaderStyled } from '../WorkoutSequence/styles'
 
@@ -15,6 +14,7 @@ const appear = keyframes`
 export const WorkingContainer = styled.section`
     width: 100%;
     height: 100vh;
+    padding: 5vh 0;
 
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -27,13 +27,25 @@ export const WorkingContainer = styled.section`
 
     position: relative;
 
-    > * {
-        width: 100%;
-        height: 100%;
+    @media (max-width: 767px) {
+        padding: 0;
 
         display: flex;
         flex-direction: column;
+        align-items: center;
         justify-content: center;
+
+        overflow: hidden;
+    }
+
+    > * {
+        width: 100%;
+        height: 100%;
+        padding: 16px 1rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
         align-items: center;
 
         z-index: 99;
@@ -45,32 +57,5 @@ export const WorkingContainer = styled.section`
                 }
             }
         }
-    }
-
-    &:after {
-        content: '';
-        width: 100%;
-        height: 100%;
-
-        position: absolute;
-        top: 0;
-        left: 0;
-
-        background: linear-gradient(
-            transparent,
-            ${props => darken(0.3, props.color)}
-        );
-
-        z-index: 9;
-    }
-
-    @media (max-width: 767px) {
-        height: 100vh;
-        padding: 16px 1rem;
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
     }
 `

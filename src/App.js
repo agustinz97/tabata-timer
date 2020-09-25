@@ -24,6 +24,7 @@ function App() {
     const [workoutPreviewActive, setWorkoutPreviewActive] = useState(false)
 
     const startWorkout = () => {
+        setWorkoutPreviewActive(false)
         setRunning(true)
     }
 
