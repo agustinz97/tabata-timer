@@ -119,12 +119,7 @@ export const Working = ({ workout }) => {
                     remaining={timeRemaining}
                 />
 
-                {window.innerWidth > 768 && (
-                    <Title
-                        text={String(TEXTS[type]).toUpperCase()}
-                        type={type}
-                    />
-                )}
+                <Title text={String(TEXTS[type]).toUpperCase()} type={type} />
 
                 <Clock time={time} type={type} />
                 <TimeControls
