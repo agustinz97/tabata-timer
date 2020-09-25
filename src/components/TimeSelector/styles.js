@@ -14,7 +14,10 @@ export const TimeSelectorStyled = styled.div`
     color: #fff;
 
     @media (max-width: 767px) {
-        grid-template-columns: 2fr 1fr;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
     .selector-type {
@@ -26,8 +29,17 @@ export const TimeSelectorStyled = styled.div`
         grid-column-gap: 24px;
         align-items: center;
 
+        @media (max-width: 767px) {
+            margin-bottom: 24px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         span {
             font-size: 1.5rem;
+            text-align: center;
 
             @media (max-width: 767px) {
                 font-size: 18px;
@@ -40,6 +52,10 @@ export const TimeSelectorStyled = styled.div`
 
         display: flex;
         justify-content: flex-end;
+
+        @media (max-width: 767px) {
+            max-width: 150px;
+        }
     }
 `
 
