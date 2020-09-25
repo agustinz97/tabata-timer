@@ -18,19 +18,19 @@ export const SequenceHeader = ({
 }) => {
     return (
         <SequenceHeaderStyled>
-            <div>
+            <div className="header-item">
                 <span>Serie</span>
                 <p>
                     {sets}/{totalSets}
                 </p>
             </div>
-            <div>
+            <div className="header-item">
                 <span>Ronda</span>
                 <p>
                     {cycles}/{totalCycles}
                 </p>
             </div>
-            <div>
+            <div className="header-item">
                 <span>Tiempo restante</span>
                 <p>{secondsToMinutes(remaining)}</p>
             </div>

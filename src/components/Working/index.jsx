@@ -118,7 +118,14 @@ export const Working = ({ workout }) => {
                     totalCycles={workoutObject.cycles}
                     remaining={timeRemaining}
                 />
-                <Title text={String(TEXTS[type]).toUpperCase()} type={type} />
+
+                {window.innerWidth > 768 && (
+                    <Title
+                        text={String(TEXTS[type]).toUpperCase()}
+                        type={type}
+                    />
+                )}
+
                 <Clock time={time} type={type} />
                 <TimeControls
                     handlePause={pauseWorkout}

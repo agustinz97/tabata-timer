@@ -35,7 +35,7 @@ export const SubtitleStyled = styled.h3`
 
 export const WorkoutTitleStyled = styled.div`
     height: 40px;
-    background-color: ${props => (props.color ? props.color : 'blue')};
+    background-color: ${props => props.color && props.color};
     margin-bottom: 16px;
 
     display: flex;
@@ -55,8 +55,5 @@ export const WorkoutTitleStyled = styled.div`
         color: #fff;
         font-size: 20px;
         margin: 0 8px;
-    }
-
-    @media (max-width: 768px) {
     }
 `

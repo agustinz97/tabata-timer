@@ -30,8 +30,11 @@ export const Button = styled.button`
     i {
         font-size: 60px;
 
+        @media (max-width: 768px) {
+            font-size: 40px;
+        }
+
         &.fa-redo {
-            font-size: 50px;
             transform: rotateY(180deg);
         }
     }

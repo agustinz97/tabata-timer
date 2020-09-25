@@ -40,8 +40,6 @@ export const WorkingContainer = styled.section`
 
         &:first-child {
             ${SequenceHeaderStyled} {
-                margin-bottom: 16px;
-
                 @media (min-width: 1024px) {
                     display: none;
                 }
@@ -67,10 +65,8 @@ export const WorkingContainer = styled.section`
     }
 
     @media (max-width: 767px) {
-        min-height: 100vh;
-        height: auto;
-        max-height: 200vh;
-        padding: 32px 1rem;
+        height: 100vh;
+        padding: 16px 1rem;
 
         display: flex;
         flex-direction: column;

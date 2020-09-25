@@ -28,19 +28,33 @@ export const SequenceHeaderStyled = styled.div`
 
     background-color: rgba(255, 255, 255, 0.9);
 
-    > * {
+    @media (max-width: 768px) {
+        background-color: transparent;
+
+        /* display: grid;
+        grid-template-columns: 1fr 1fr 3fr; */
+    }
+
+    .header-item {
+        height: 100%;
+
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-end;
+
+        &:not(:last-child) {
+            margin-right: 16px;
+        }
 
         span {
             font-size: 20px;
             color: #000;
             text-transform: uppercase;
+            text-align: center;
 
             @media (max-width: 768px) {
-                font-size: 18px;
+                font-size: 14px;
                 font-weight: bold;
                 color: #fff;
             }
@@ -52,14 +66,10 @@ export const SequenceHeaderStyled = styled.div`
             color: #000;
 
             @media (max-width: 768px) {
-                font-size: 30px;
+                font-size: 20px;
                 color: #fff;
             }
         }
-    }
-
-    @media (max-width: 768px) {
-        background-color: transparent;
     }
 `
 export const Sequence = styled.ul`
