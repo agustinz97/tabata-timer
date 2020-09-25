@@ -9,6 +9,10 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media (max-width: 768px) {
+        max-width: 200px;
+    }
 `
 
 export const Button = styled.button`
@@ -35,7 +39,13 @@ export const Button = styled.button`
         }
 
         &.fa-redo {
+            font-size: 50px;
+
             transform: rotateY(180deg);
+
+            @media (max-width: 768px) {
+                font-size: 36px;
+            }
         }
     }
 `
