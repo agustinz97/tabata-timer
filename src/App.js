@@ -32,10 +32,6 @@ function App() {
         setWorkoutArray(createWorkoutArray(workout))
     }, [workout])
 
-    useEffect(() => {
-        console.log(workoutPreviewActive)
-    }, [workoutPreviewActive])
-
     return (
         <AppContext.Provider value={{ setRunning, workout, setWorkout }}>
             <AppStyled>

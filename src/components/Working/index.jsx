@@ -23,7 +23,6 @@ export const Working = ({ workout }) => {
     const [currentSet, setCurrentSet] = useState(0)
     const [currentCycle, setCurrentCycle] = useState(0)
     const [timeRemaining, setTimeRemainig] = useState()
-    const [sequenceActive, setSequenceActive] = useState(false)
 
     const { setRunning, workout: workoutObject } = useContext(AppContext)
 
@@ -139,7 +138,6 @@ export const Working = ({ workout }) => {
                 cycles={currentCycle}
                 totalCycles={workoutObject.cycles}
                 remaining={timeRemaining}
-                active={sequenceActive}
             />
         </WorkingContainer>
     )
