@@ -54,6 +54,7 @@ function App() {
                                 active={workoutPreviewActive}
                             />
                             <OpenWorkout
+                                name="open-workout"
                                 onClick={() =>
                                     setWorkoutPreviewActive(
                                         prevState => !prevState

@@ -1,7 +1,1 @@
 User-agent: *
-Disallow: /login/
-Disallow: /card/
-Disallow: /fotos/
-Disallow: /temp/
-Disallow: /search/
-Disallow: /*.pdf$

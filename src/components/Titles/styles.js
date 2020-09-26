@@ -25,7 +25,7 @@ export const TitleStyled = styled.h1`
     }
 `
 
-export const SubtitleStyled = styled.h3`
+export const SubtitleStyled = styled.h2`
     font-size: 2rem;
     line-height: 2rem;
     color: ${({ color }) => (color ? color : 'black')};
