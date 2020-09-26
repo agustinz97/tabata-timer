@@ -54,12 +54,12 @@ function App() {
                                 active={workoutPreviewActive}
                             />
                             <OpenWorkout
-                                name="open-workout"
                                 onClick={() =>
                                     setWorkoutPreviewActive(
                                         prevState => !prevState
                                     )
                                 }
+                                aria-label="empezar entrenamiento"
                             >
                                 {workoutPreviewActive === true ? (
                                     <i className="fas fa-times"></i>

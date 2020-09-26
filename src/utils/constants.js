@@ -19,8 +19,8 @@ export const TEXTS = {
 }
 
 export const COLOR_TYPE = {
-    rest: '#32a852',
-    longRest: '#32a852',
+    rest: '#247d3c',
+    longRest: '#247d3c',
     work: '#db3421',
     preparation: '#520187',
     finish: '#3268a8',
