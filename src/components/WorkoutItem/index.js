@@ -23,7 +23,7 @@ const WorkoutItemStyled = styled.div`
 export const WorkoutItem = ({ text = null, time, type }) => {
     return (
         <WorkoutItemStyled color={COLOR_TYPE[type]}>
-            <h5>{text || TEXTS[type]}</h5>
+            <span>{text || TEXTS[type]}</span>
             <span>{time > 0 ? secondsToMinutes(time) : '--:--'}</span>
         </WorkoutItemStyled>
     )
