@@ -79,15 +79,18 @@ export const InputInteger = ({
             >
                 <i className="fas fa-minus"></i>
             </span>
-            <input
-                type="number"
-                value={value || ''}
-                placeholder={placeholder}
-                name={name}
-                readOnly
-                disabled={true}
-                className="integer"
-            />
+            <label>
+                <input
+                    type="number"
+                    value={value || ''}
+                    placeholder={placeholder}
+                    name={name}
+                    id={name}
+                    readOnly
+                    disabled={true}
+                    className="integer"
+                />
+            </label>
             <span
                 className="control right"
                 onClick={plus}
@@ -171,17 +174,19 @@ export const InputTime = ({
 
     return (
         <InputContainer>
-            <input
-                type="text"
-                maxLength="5"
-                className="time"
-                name={name}
-                placeholder={placeholder}
-                value={value || ''}
-                onKeyDown={validateInput}
-                onChange={onChange}
-                onBlur={onBlur}
-            />
+            <label>
+                <input
+                    type="text"
+                    maxLength="5"
+                    className="time"
+                    name={name}
+                    placeholder={placeholder}
+                    value={value || ''}
+                    onKeyDown={validateInput}
+                    onChange={onChange}
+                    onBlur={onBlur}
+                />
+            </label>
         </InputContainer>
     )
 }

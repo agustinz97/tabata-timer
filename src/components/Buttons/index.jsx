@@ -4,7 +4,7 @@ import { StartButtonStyled } from './styles'
 
 export const StartButton = ({ text, handleClick }) => {
     return (
-        <StartButtonStyled onClick={handleClick}>
+        <StartButtonStyled onClick={handleClick} name="startButton">
             {text}
             <i className="fas fa-play"></i>
         </StartButtonStyled>

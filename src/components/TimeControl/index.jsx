@@ -39,19 +39,19 @@ export const TimeControls = ({
 
     return (
         <Container>
-            <Button onClick={onRestart}>
+            <Button onClick={onRestart} name="restart">
                 <i className="fas fa-redo"></i>
             </Button>
             {isPause ? (
-                <Button onClick={onResume}>
+                <Button onClick={onResume} name="resume">
                     <i className="fas fa-play"></i>
                 </Button>
             ) : (
-                <Button onClick={onPause}>
+                <Button onClick={onPause} name="pause">
                     <i className="fas fa-pause"></i>
                 </Button>
             )}
-            <Button onClick={onStop}>
+            <Button onClick={onStop} name="stop">
                 <i className="fas fa-stop"></i>
             </Button>
         </Container>
