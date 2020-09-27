@@ -93,6 +93,7 @@ export const InputInteger = ({
                     readOnly
                     disabled={true}
                     className="integer"
+                    autoComplete="off"
                 />
             </label>
             <span
@@ -175,6 +176,8 @@ export const InputTime = ({
                 <input
                     ref={input}
                     type="text"
+                    pattern="[0-9]*"
+                    inputmode="numeric"
                     maxLength="5"
                     className="time"
                     name={name}
@@ -182,6 +185,7 @@ export const InputTime = ({
                     value={value || ''}
                     onChange={onChange}
                     onBlur={onBlur}
+                    autoComplete="off"
                 />
             </label>
         </InputContainer>

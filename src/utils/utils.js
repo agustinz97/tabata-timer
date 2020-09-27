@@ -105,7 +105,7 @@ export const getTotalTimeFromWorkoutArray = workout => {
 
 // Restricts input for the given textbox to the given inputFilter function.
 export function setInputFilter(textbox, inputFilter) {
-    ;[
+    const events = [
         'input',
         'keydown',
         'keyup',
@@ -114,7 +114,9 @@ export function setInputFilter(textbox, inputFilter) {
         'select',
         'contextmenu',
         'drop',
-    ].forEach(function (event) {
+    ]
+
+    events.forEach(function (event) {
         textbox.addEventListener(event, function () {
             if (inputFilter(this.value)) {
                 this.oldValue = this.value
