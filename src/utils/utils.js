@@ -103,17 +103,32 @@ export const getTotalTimeFromWorkoutArray = workout => {
     return 0
 }
 
-export function setCaretPosition(elem, caretPos) {
-    if (elem != null) {
-        if (elem.createTextRange) {
-            var range = elem.createTextRange()
-            range.move('character', caretPos)
-            range.select()
-        } else {
-            if (elem.selectionStart) {
-                elem.focus()
-                elem.setSelectionRange(caretPos, caretPos)
-            } else elem.focus()
-        }
-    }
+// Restricts input for the given textbox to the given inputFilter function.
+export function setInputFilter(textbox, inputFilter) {
+    ;[
+        'input',
+        'keydown',
+        'keyup',
+        'mousedown',
+        'mouseup',
+        'select',
+        'contextmenu',
+        'drop',
+    ].forEach(function (event) {
+        textbox.addEventListener(event, function () {
+            if (inputFilter(this.value)) {
+                this.oldValue = this.value
+                this.oldSelectionStart = this.selectionStart
+                this.oldSelectionEnd = this.selectionEnd
+            } else if (this.hasOwnProperty('oldValue')) {
+                this.value = this.oldValue
+                this.setSelectionRange(
+                    this.oldSelectionStart,
+                    this.oldSelectionEnd
+                )
+            } else {
+                this.value = ''
+            }
+        })
+    })
 }

@@ -1,5 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import { formatedToSeconds, secondsToMinutes } from '../../utils/utils'
+import React, { useEffect, useState, useRef } from 'react'
+import {
+    formatedToSeconds,
+    secondsToMinutes,
+    setInputFilter,
+} from '../../utils/utils'
 
 import { InputContainer } from './styles'
 
@@ -112,20 +116,7 @@ export const InputTime = ({
     const INITIAL_TIME_VALUE = secondsToMinutes(initialValue) || '00:00'
 
     const [value, setValue] = useState(INITIAL_TIME_VALUE)
-
-    const validateInput = e => {
-        const isNumber = !(e.keyCode < 48 || e.keyCode > 57)
-        const isNumberPad = !(e.keyCode < 96 || e.keyCode > 105)
-        const isSpecialChar =
-            e.keyCode === 8 || e.keyCode === 9 || e.keyCode === 46
-        const isArrow = !(e.keyCode < 37 || e.keyCode > 40)
-
-        !isNumber &&
-            !isSpecialChar &&
-            !isNumberPad &&
-            !isArrow &&
-            e.preventDefault()
-    }
+    const input = useRef(null)
 
     const onChange = e => {
         let elValue = e.target.value
@@ -172,17 +163,23 @@ export const InputTime = ({
         }
     }
 
+    useEffect(() => {
+        setInputFilter(input.current, function (value) {
+            return /^\d*:?\d*$/.test(value) // Allow digits and ':' only, using a RegExp
+        })
+    }, [])
+
     return (
         <InputContainer>
             <label>
                 <input
+                    ref={input}
                     type="text"
                     maxLength="5"
                     className="time"
                     name={name}
                     placeholder={placeholder}
                     value={value || ''}
-                    onKeyDown={validateInput}
                     onChange={onChange}
                     onBlur={onBlur}
                 />
