@@ -24,7 +24,9 @@ export const Working = ({ workout }) => {
     const [currentCycle, setCurrentCycle] = useState(0)
     const [timeRemaining, setTimeRemainig] = useState()
 
-    const { setRunning, workout: workoutObject } = useContext(AppContext)
+    const { setRunning, workout: workoutObject, screenKeeper } = useContext(
+        AppContext
+    )
 
     //timer
     useEffect(() => {
@@ -99,6 +101,8 @@ export const Working = ({ workout }) => {
                 setCurrentCycle(prevCycle => prevCycle + 1)
                 setCurrentSet(1)
             }
+        } else if (workoutItem?.type === 'finish') {
+            screenKeeper.release()
         }
     }
 

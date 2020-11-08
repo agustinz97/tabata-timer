@@ -7,6 +7,7 @@ import { Working } from './components/Working'
 
 import { AppStyled, Division, OpenWorkout } from './styles'
 import { createWorkoutArray } from './utils/utils'
+import { ScreenAlive } from './utils/keepScreenAlive'
 
 export const AppContext = React.createContext({})
 
@@ -14,18 +15,21 @@ function App() {
     const [running, setRunning] = useState(false)
     const [workout, setWorkout] = useState({
         preparation: 3,
-        work: 5,
+        work: 2,
         rest: 1,
-        cycles: 3,
-        sets: 5,
+        cycles: 1,
+        sets: 1,
         longRest: 2,
     })
     const [workoutArray, setWorkoutArray] = useState([])
     const [workoutPreviewActive, setWorkoutPreviewActive] = useState(false)
+    const [screenKeeper] = useState(new ScreenAlive())
 
     const startWorkout = () => {
         setWorkoutPreviewActive(false)
         setRunning(true)
+
+        screenKeeper.keepAlive()
     }
 
     useEffect(() => {
@@ -33,7 +37,9 @@ function App() {
     }, [workout])
 
     return (
-        <AppContext.Provider value={{ setRunning, workout, setWorkout }}>
+        <AppContext.Provider
+            value={{ setRunning, workout, setWorkout, screenKeeper }}
+        >
             <AppStyled>
                 {running ? (
                     <>
