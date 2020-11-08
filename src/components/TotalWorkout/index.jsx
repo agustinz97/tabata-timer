@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
 import { WorkoutItem } from '../WorkoutItem'
-import { Subtitle } from '../Titles'
 import { StartButton } from '../Buttons'
 
 import { TotalWorkoutStyled, Workout, TotalTime } from './styles'
@@ -24,7 +23,7 @@ export const TotalWorkout = ({ workout = [], handleStart, active }) => {
     return (
         <TotalWorkoutStyled active={active}>
             <TotalTime>
-                <Subtitle text={'Rutina'} />
+                <h2>Rutina</h2>
                 <span> {secondsToMinutes(totalTime)} </span>
             </TotalTime>
 

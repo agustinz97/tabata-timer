@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 
-import { Title } from './components/Titles'
 import { WorkoutCreator } from './components/WorkoutCreator'
 import { TotalWorkout } from './components/TotalWorkout'
 import { Working } from './components/Working'
@@ -8,6 +7,10 @@ import { Working } from './components/Working'
 import { AppStyled, Division, OpenWorkout } from './styles'
 import { createWorkoutArray } from './utils/utils'
 import { ScreenAlive } from './utils/keepScreenAlive'
+
+import { LogInPage } from './pages/LogIn'
+
+import { GlobalStyles } from './styles'
 
 export const AppContext = React.createContext({})
 
@@ -42,6 +45,13 @@ function App() {
     }, [workout])
 
     return (
+        <>
+            <GlobalStyles />
+            <LogInPage />
+        </>
+    )
+
+    /*  return (
         <AppContext.Provider
             value={{ setRunning, workout, setWorkout, screenKeeper }}
         >
@@ -52,7 +62,6 @@ function App() {
                     </>
                 ) : (
                     <>
-                        <Title text={'Tabata Timer'} />
                         <Division>
                             <WorkoutCreator />
                             <TotalWorkout
@@ -79,7 +88,7 @@ function App() {
                 )}
             </AppStyled>
         </AppContext.Provider>
-    )
+    ) */
 }
 
 export default App

@@ -2,7 +2,6 @@ import React, { useEffect, useState, useContext } from 'react'
 
 import { Clock } from '../Clock'
 import { TimeControls } from '../TimeControl'
-import { Title } from '../Titles'
 import { WorkoutSequence, SequenceHeader } from '../WorkoutSequence'
 import { WorkingContainer } from './styles'
 
@@ -123,7 +122,7 @@ export const Working = ({ workout }) => {
                     remaining={timeRemaining}
                 />
 
-                <Title text={String(TEXTS[type]).toUpperCase()} type={type} />
+                <h1>{String(TEXTS[type]).toUpperCase()}</h1>
 
                 <Clock time={time} type={type} />
                 <TimeControls
