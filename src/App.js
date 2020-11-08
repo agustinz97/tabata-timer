@@ -12,15 +12,18 @@ import { ScreenAlive } from './utils/keepScreenAlive'
 export const AppContext = React.createContext({})
 
 function App() {
-    const [running, setRunning] = useState(false)
-    const [workout, setWorkout] = useState({
-        preparation: 3,
-        work: 2,
-        rest: 1,
+    const lastWorkout = localStorage.getItem('last-workout')
+    const defaultWorkout = lastWorkout || {
+        preparation: 0,
+        work: 0,
+        rest: 0,
         cycles: 1,
         sets: 1,
-        longRest: 2,
-    })
+        longRest: 0,
+    }
+
+    const [running, setRunning] = useState(false)
+    const [workout, setWorkout] = useState(defaultWorkout)
     const [workoutArray, setWorkoutArray] = useState([])
     const [workoutPreviewActive, setWorkoutPreviewActive] = useState(false)
     const [screenKeeper] = useState(new ScreenAlive())
@@ -30,6 +33,8 @@ function App() {
         setRunning(true)
 
         screenKeeper.keepAlive()
+
+        localStorage.setItem('last-workout', workout)
     }
 
     useEffect(() => {
