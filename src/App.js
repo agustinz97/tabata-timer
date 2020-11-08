@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-import { WorkoutCreator } from './components/WorkoutCreator'
-import { TotalWorkout } from './components/TotalWorkout'
+import Header from './components/Header'
+import Footer from './components/Footer'
+import FastWorkout from './pages/FastWorkout'
+
 import { Working } from './components/Working'
 
-import { AppStyled, Division, OpenWorkout } from './styles'
 import { createWorkoutArray } from './utils/utils'
 import { ScreenAlive } from './utils/keepScreenAlive'
 
-import { LogInPage } from './pages/LogIn'
-
-import { GlobalStyles } from './styles'
+import './styles.css'
 
 export const AppContext = React.createContext({})
 
@@ -45,17 +45,19 @@ function App() {
     }, [workout])
 
     return (
-        <>
-            <GlobalStyles />
-            <LogInPage />
-        </>
-    )
+        <Router>
+            <AppContext.Provider
+                value={{ setRunning, workout, setWorkout, screenKeeper }}
+            >
+                <Header />
+                <div className="Content">
+                    <Switch>
+                        <Route exact path="/" component={FastWorkout} />
+                    </Switch>
+                </div>
+                <Footer />
 
-    /*  return (
-        <AppContext.Provider
-            value={{ setRunning, workout, setWorkout, screenKeeper }}
-        >
-            <AppStyled>
+                {/*  <AppStyled>
                 {running ? (
                     <>
                         <Working workout={workoutArray} />
@@ -86,9 +88,10 @@ function App() {
                         </Division>
                     </>
                 )}
-            </AppStyled>
-        </AppContext.Provider>
-    ) */
+            </AppStyled> */}
+            </AppContext.Provider>
+        </Router>
+    )
 }
 
 export default App

@@ -1,0 +1,20 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+body {
+    --color-light-violet: #707070;
+    --color-violet: #43425d;
+    --color-primary: #893cc2;
+    --color-grey: #d7d8da;
+
+    background-color: var(--color-grey);
+}
+
+.Content {
+    padding-top: 90px;
+    padding-bottom: 70px;
+}

@@ -1,0 +1,9 @@
+.Title {
+    display: grid;
+    place-items: center;
+
+    font-size: 35px;
+    letter-spacing: 4px;
+    font-weight: 700;
+    color: var(--color-primary);
+}

@@ -1,0 +1,19 @@
+.Header {
+    width: 100%;
+    height: 60px;
+    padding: 0 2rem;
+
+    background-color: #fff;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: fixed;
+    z-index: 9999999;
+}
+
+.Header .icon {
+    font-size: 30px;
+    color: var(--color-primary);
+}
