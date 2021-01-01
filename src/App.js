@@ -12,7 +12,7 @@ import { ScreenAlive } from './utils/keepScreenAlive'
 export const AppContext = React.createContext({})
 
 function App() {
-    const lastWorkout = localStorage.getItem('last-workout')
+    const lastWorkout = JSON.parse(localStorage.getItem('last-workout'))
     const defaultWorkout = lastWorkout || {
         preparation: 0,
         work: 0,
@@ -34,7 +34,7 @@ function App() {
 
         screenKeeper.keepAlive()
 
-        localStorage.setItem('last-workout', workout)
+        localStorage.setItem('last-workout', JSON.stringify(workout))
     }
 
     useEffect(() => {
