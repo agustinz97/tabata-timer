@@ -14,7 +14,7 @@ export const AppStyled = styled.section`
     position: relative;
     overflow-x: hidden;
 
-    background: #0373fc;
+    background: #599df0;
 `
 
 export const Division = styled.div`

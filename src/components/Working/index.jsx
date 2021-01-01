@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 
+import Swal from 'sweetalert2'
+
 import { Clock } from '../Clock'
 import { TimeControls } from '../TimeControl'
 import { Title } from '../Titles'
@@ -69,16 +71,43 @@ export const Working = ({ workout }) => {
     /*funciones para los controlers de tiempo*/
     const restartWorkout = () => {
         timerState.pause()
-        setTime(workout[0].time)
-        setCurrentIndex(0)
-        setType('preparation')
-        setCurrentSet(0)
-        setCurrentCycle(0)
-        setTimeRemainig(getTotalTimeFromWorkoutArray(workout || []))
+
+        Swal.fire({
+            title: '¿Quieres reiniciar el entrenamiento?',
+            confirmButtonText: 'Si',
+            showCancelButton: true,
+            cancelButtonText: 'No',
+            icon: 'question',
+        }).then(result => {
+            if (result.isConfirmed) {
+                setTime(workout[0].time)
+                setCurrentIndex(0)
+                setType('preparation')
+                setCurrentSet(0)
+                setCurrentCycle(0)
+                setTimeRemainig(getTotalTimeFromWorkoutArray(workout || []))
+            } else {
+                timerState.resume()
+            }
+        })
     }
 
     const stopWorkout = () => {
-        setRunning(false)
+        timerState.pause()
+
+        Swal.fire({
+            title: '¿Quieres finalizar el entrenamiento?',
+            confirmButtonText: 'Si',
+            showCancelButton: true,
+            cancelButtonText: 'No',
+            icon: 'question',
+        }).then(result => {
+            if (result.isConfirmed) {
+                setRunning(false)
+            } else {
+                timerState.resume()
+            }
+        })
     }
 
     const resumeWorkout = () => {
